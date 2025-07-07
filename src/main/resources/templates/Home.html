@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Inicio - AMVAC</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+    </head>
+    <body>
+        <div class="page-container">
+            <header class="main-header">
+                <div class="logo-container">
+                    <img th:src="@{/images/amvac-logo.png}" alt="AMVAC Logo">
+                    <nav class="main-nav">
+                        <a th:href="@{/}" class="active">Inicio</a>
+                        <a th:href="@{/catalogo}">Catálogo</a>
+                    </nav>
+                </div>
+                <div class="user-options">
+                    <a th:href="@{/login}" class="account-icon" title="Mi Cuenta">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+                    <a th:href="@{/Carrito}" class="btn btn-primary">Carrito</a>
+                </div>
+            </header>
+
+            <main class="home-content">
+                <div class="home-cards-container">
+                    <div class="home-card">
+                        <img class="home-card-bg" th:src="@{/images/promo-bg.jpg}" alt="Promociones">
+                        <div class="home-card-overlay">
+                            <h2>Promociones</h2>
+                            <p>Descripcion del producto</p>
+                            <a th:href="@{/catalogo(categoria='Promociones')}" class="btn btn-primary">Ver más</a>
+                        </div>
+                    </div>
+
+                    <div class="home-card">
+                        <img class="home-card-bg" th:src="@{/images/vendido-bg.jpg}" alt="Más Vendido">
+                        <div class="home-card-overlay">
+                            <h2>Más Vendido</h2>
+                            <p>Descripcion del producto</p>
+                            <a th:href="@{/catalogo}" class="btn btn-primary">Ver más</a>
+                        </div>
+                    </div>
+
+                    <div class="home-card">
+                        <img class="home-card-bg" th:src="@{/images/novedades-bg.jpg}" alt="Novedades">
+                        <div class="home-card-overlay">
+                            <h2>Novedades</h2>
+                            <p>Descripcion del producto</p>
+                            <a th:href="@{/catalogo(categoria='Novedades')}" class="btn btn-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
