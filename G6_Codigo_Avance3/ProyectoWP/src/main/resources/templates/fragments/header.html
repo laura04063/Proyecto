@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<body>
+    <header class="main-header" th:fragment="header">
+        <div class="container">
+            <div class="logo-container">
+                <a th:href="@{/}"><img th:src="@{/images/amvac-logo.png}" alt="AMVAC Logo"></a>
+                <nav class="main-nav">
+                    <a th:href="@{/}" th:classappend="${activePage == 'inicio' ? 'active' : ''}">Inicio</a>
+                    <a th:href="@{/catalogo}" th:classappend="${activePage == 'catalogo' ? 'active' : ''}">Catálogo</a>
+                </nav>
+            </div>
+            <div class="user-options">
+                 <a th:href="@{/perfil}" class="account-icon" title="Mi Cuenta">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </a>
+                <a th:href="@{/Carrito}" class="btn btn-primary">Carrito</a>
+            </div>
+        </div>
+    </header>
+</body>
+</html>

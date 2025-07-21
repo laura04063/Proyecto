@@ -1,0 +1,563 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 1 jul 2025, 9:46:33 p.m.
+    Author     : arman
+*/
+/*Fuentes*/
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&family=Akatab:wght@400;700;800&family=Arsenal:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/**/
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+main {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/*Header*/
+.main-header {
+    background: #ffffff;
+    padding: 15px 0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 40px;
+    margin-right: 50px;
+}
+
+.main-nav a {
+    font-family: 'Arsenal', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #555;
+    text-decoration: none;
+    margin: 0 15px;
+    padding-bottom: 5px;
+    transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.main-nav a.active, .main-nav a:hover {
+    color: #000;
+    border-bottom: 3px solid #5cb85c;
+}
+
+.user-options {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.account-icon {
+    color: #5cb85c;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+.account-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.account-icon:hover {
+    color: #4a9b4a;
+}
+
+/*Reutilizables*/
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #4a9b4a;
+    transform: translateY(-2px);
+}
+
+.breadcrumb {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #777;
+}
+
+.breadcrumb a {
+    color: #5cb85c;
+    text-decoration: none;
+}
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/*Login y registro*/
+body.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('/images/fondo-login.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.form-container .logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.auth-form h2 {
+    margin-bottom: 25px;
+    font-family: 'Akatab', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 16px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+/*Inicio Home*/
+.home-section {
+    margin-bottom: 60px;
+}
+
+.home-section h2 {
+    font-family: 'Akatab', sans-serif;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.product-carousel {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap; 
+}
+
+.home-cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.home-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 500px;
+    width: 350px;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    flex-shrink: 0;
+}
+
+
+.home-card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.home-card-overlay {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    text-align: left;
+}
+
+.home-card-overlay h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.home-card-overlay p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/*Catalogo*/
+.catalog-header {
+    margin-bottom: 30px;
+}
+.catalog-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 30px;
+    border-bottom: 2px solid #eee;
+}
+
+.filter-tabs a {
+    color: #555;
+    text-decoration: none;
+    padding: 10px 5px;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: -2px;
+    border-bottom: 3px solid transparent;
+}
+
+.filter-tabs a.active, .filter-tabs a:hover {
+    color: #5cb85c;
+    border-bottom-color: #5cb85c;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background: #ffffff;
+    border: 1px solid #e9e9e9;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+.product-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.product-card-link {
+    text-decoration: none;
+    color: inherit;
+    padding: 20px 20px 10px 20px;
+}
+
+.product-card-link img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product-card-link h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    min-height: 40px;
+}
+
+.product-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 20px 20px;
+    margin-top: auto;
+}
+
+.product-card-footer p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+/*Detalle del producto*/
+.product-detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    margin-top: 30px;
+}
+
+.product-detail-image img {
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid #f0f0f0;
+}
+
+.product-detail-info h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.price-favorite-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.detail-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+.btn-favorite {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.btn-favorite svg {
+    stroke-width: 2.5;
+}
+
+.size-options {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.size-btn {
+    padding: 10px 25px;
+    border: 2px solid #ddd;
+    background-color: white;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.size-btn.active, .size-btn:hover {
+    border-color: #5cb85c;
+    color: #5cb85c;
+    font-weight: bold;
+}
+
+.detail-section {
+    margin-bottom: 25px;
+}
+.detail-section h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.detail-section p {
+    color: #555;
+    line-height: 1.7;
+}
+
+.product-specs {
+    list-style: none;
+}
+.product-specs li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+.product-specs li strong {
+    color: #333;
+}
+
+.add-to-cart-action {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.btn-large {
+    font-size: 18px;
+    padding: 15px 40px;
+}
+
+
+/*Perfil de usuario*/
+.profile-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.profile-sidebar {
+    flex: 0 0 320px;
+}
+
+.profile-main-content {
+    flex-grow: 1;
+}
+
+.profile-sidebar {
+    flex: 0 0 320px;
+}
+
+.user-info-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.user-info-card h2 {
+    font-size: 24px;
+    margin: 0;
+}
+.user-info-card p {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 20px;
+}
+.user-info-card hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.user-details {
+    list-style: none;
+}
+.user-details li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+.user-details li strong {
+    color: #333;
+}
+
+.btn-edit {
+    display: block;
+    text-align: center;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.btn-edit:hover {
+    background-color: #e0e0e0;
+}
+
+.favorites-section, .history-section {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.favorites-section h3, .history-section h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.favorite-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+.favorite-item:last-child {
+    border-bottom: none;
+}

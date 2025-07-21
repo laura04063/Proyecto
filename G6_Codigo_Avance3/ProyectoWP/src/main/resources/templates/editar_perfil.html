@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Perfil - AMVAC</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div class="page-container">
+        <header class="main-header" th:insert="~{fragments/header :: header}"></header>
+
+        <main>
+            <div class="container">
+                <h2>Editar Información de Perfil</h2>
+                <form class="auth-form" th:action="@{/perfil/guardar}" th:object="${usuario}" method="post">
+                    
+                    <input type="hidden" th:field="*{idUsuario}" />
+                    <input type="hidden" th:field="*{password}" />
+                    
+                    <div class="input-group">
+                        <label for="nombre">Nombre de Cliente</label>
+                        <input type="text" id="nombre" th:field="*{nombre}">
+                    </div>
+                    <div class="input-group">
+                        <label for="nombreEmpresa">Nombre de Empresa</label>
+                        <input type="text" id="nombreEmpresa" th:field="*{nombreEmpresa}">
+                    </div>
+                    <div class="input-group">
+                        <label for="ubicacion">Ubicación</label>
+                        <input type="text" id="ubicacion" th:field="*{ubicacion}">
+                    </div>
+                    <div class="input-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" id="telefono" th:field="*{telefono}">
+                    </div>
+                    <div class="input-group">
+                        <label for="correo">Email</label>
+                        <input type="email" id="correo" th:field="*{correo}">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary submit-btn">Guardar Cambios</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title th:if="${usuario != null}" th:text="${usuario.nombre} + ' - Perfil'">Mi Perfil</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+    </head>
+    <body>
+        <div class="page-container">
+            <header class="main-header" th:insert="~{fragments/header :: header}"></header>
+
+            <main th:if="${usuario != null}" th:object="${usuario}">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <span><a th:href="@{/}">Inicio</a> > Mi cuenta</span>
+                    </div>
+
+                    <div class="profile-container">
+                        <aside class="profile-sidebar">
+                            <div class="user-info-card">
+                                <h2 th:text="*{nombre}">Nombre de cliente</h2>
+                                <p th:text="*{nombreEmpresa}">Nombre de empresa</p>
+                                <hr>
+                                <ul class="user-details">
+                                    <li><strong>Ubicacion:</strong> <span th:text="*{ubicacion}">########</span></li>
+                                    <li><strong>Telefono:</strong> <span th:text="*{telefono}">########</span></li>
+                                    <li><strong>Email:</strong> <span th:text="*{correo}">########</span></li>
+                                </ul>
+                                <a th:href="@{/perfil/editar}" class="btn-edit">Editar</a>
+                            </div>
+                        </aside>
+
+                        <section class="profile-main-content">
+                            <div class="favorites-section">
+                                <h3>Tus Favoritos</h3>
+
+                                <div th:if="${!usuario.favoritos.isEmpty()}">
+                                    <div class="favorite-item" th:each="producto : ${usuario.favoritos}">
+                                        <p th:text="${producto.nombre}">Herbicida Glyphosate</p>
+                                        <span th:text="'$' + ${#numbers.formatDecimal(producto.precio, 1, 'POINT', 0, 'COMMA')} + '/L'">$30/L</span>
+                                    </div>
+                                </div>
+
+                                <div th:if="${usuario.favoritos.isEmpty()}">
+                                    <p>Aún no has añadido ningún producto a tus favoritos.</p>
+                                </div>
+                            </div>
+
+                            <div class="history-section">
+                                <h3>Historial de compras</h3>
+                                <form class="history-search">
+                                    <input type="date" name="fecha">
+                                    <button type="submit">Buscar</button>
+                                </form>
+
+                                <div>
+                                    <p>Aún no has realizado ninguna compra.</p>
+                                </div>
+                            </div>
+                    </div>
+                    </section>
+                </div>
+        </div> </main>
+
+    <div th:if="${usuario == null}" class="container">
+        <h2>Error</h2>
+        <p>No se pudo cargar la información del perfil.</p>
+    </div>
+</div>
+</body>
+</html>

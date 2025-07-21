@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Inicio - AMVAC</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+    </head>
+    <body>
+        <div class="page-container">
+            <header class="main-header" th:insert="~{fragments/header :: header}"></header>
+
+            <main>
+                <div class="container">
+                    
+                    <div class="home-cards-container">
+                        <div class="home-card">
+                            <img class="home-card-bg" th:src="@{/images/promo-bg.jpg}" alt="Promociones">
+                            <div class="home-card-overlay">
+                                <h2>Promociones</h2>
+                                <p>Descripcion del producto</p>
+                                <a th:href="@{/catalogo(categoria='Promociones')}" class="btn btn-primary">Ver más</a>
+                            </div>
+                        </div>
+
+                        <div class="home-card">
+                            <img class="home-card-bg" th:src="@{/images/vendido-bg.jpg}" alt="Más Vendido">
+                            <div class="home-card-overlay">
+                                <h2>Más Vendido</h2>
+                                <p>Descripcion del producto</p>
+                                <a th:href="@{/catalogo}" class="btn btn-primary">Ver más</a>
+                            </div>
+                        </div>
+
+                        <div class="home-card">
+                            <img class="home-card-bg" th:src="@{/images/novedades-bg.jpg}" alt="Novedades">
+                            <div class="home-card-overlay">
+                                <h2>Novedades</h2>
+                                <p>Descripcion del producto</p>
+                                <a th:href="@{/catalogo(categoria='Novedades')}" class="btn btn-primary">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

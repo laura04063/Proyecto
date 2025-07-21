@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Catálogo - AMVAC</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+    </head>
+    <body>
+        <div class="page-container">
+            <header class="main-header" th:insert="~{fragments/header :: header}"></header>
+
+            <main class="container">
+                <div class="breadcrumb">
+                    <span><a th:href="@{/}">Inicio</a> > Catálogo</span>
+                </div>
+
+                <div class="catalog-header">
+                    <h2>Agroquímicos</h2>
+                    <nav class="filter-tabs">
+                        <a th:href="@{/catalogo}" th:classappend="${currentCategoria == null ? 'active' : ''}">Todos</a>
+                        <a th:href="@{/catalogo(categoria='Herbicidas')}" th:classappend="${currentCategoria == 'Herbicidas' ? 'active' : ''}">Herbicidas</a>
+                        <a th:href="@{/catalogo(categoria='Fungicidas')}" th:classappend="${currentCategoria == 'Fungicidas' ? 'active' : ''}">Fungicidas</a>
+                        <a th:href="@{/catalogo(categoria='Insecticidas')}" th:classappend="${currentCategoria == 'Insecticidas' ? 'active' : ''}">Insecticidas</a>
+                        <a th:href="@{/catalogo(categoria='Fertilizantes')}" th:classappend="${currentCategoria == 'Fertilizantes' ? 'active' : ''}">Fertilizantes</a>
+                        <a th:href="@{/catalogo(categoria='Novedades')}" th:classappend="${currentCategoria == 'Novedades' ? 'active' : ''}">Novedades</a>
+                        <a th:href="@{/catalogo(categoria='Promociones')}" th:classappend="${currentCategoria == 'Promociones' ? 'active' : ''}">Promociones</a>
+                        <a th:href="@{/catalogo(categoria='Recomendaciones')}" th:classappend="${currentCategoria == 'Recomendaciones' ? 'active' : ''}">Recomendaciones</a>
+                    </nav>
+                </div>
+
+                <section class="product-grid">
+                    <div class="product-card" th:each="producto : ${productos}">
+                        <a th:href="@{/producto/{id}(id=${producto.idProducto})}" class="product-card-link">
+                            <img th:src="@{/images/{img}(img=${producto.rutaImagen})}" alt="Imagen del producto">
+                            <h4 th:text="${producto.nombre}">Herbicida Glyphosate</h4>
+                        </a>
+                        <div class="product-card-footer">
+                            <p th:text="'₡' + ${#numbers.formatDecimal(producto.precio, 1, 'POINT', 2, 'COMMA')}">₡12,000</p>
+                            <a th:href="@{/producto/{id}(id=${producto.idProducto})}" class="btn btn-primary">Añadir</a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </body>
+</html>

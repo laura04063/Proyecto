@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.min.css}" rel="stylesheet"/>
+        <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+        <script th:src="@{/js/btnCantidad.js}"></script>
+
+    </head>
+    <body>
+        <div class="page-container">
+            <header class="main-header" th:insert="~{fragments/header :: header}"></header>
+
+            <body>
+
+                <div class="custom-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a th:href="@{/}">Inicio</a></li>
+                            <li class="breadcrumb-item active" th:text="${currentPage}" aria-current="page"></li>
+                        </ol>
+                    </nav>
+                    <h1>Tus productos</h1>
+                </div>
+
+                <div class="custom-card container-fluid">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="\images\vendido-bg.jpg"  alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Herbicida Glyphosate</h5>
+                                            <p class="card-text"> ₡12,000</p>
+                                            <p>Cantidad</p>
+                                            <div class="input-group" style="width: 160px;">
+                                                <button class="btn btn-primary" type="button" id="button-decrease">-</button>
+                                                <input type="number" class="form-control text-center" value="1" min="1" max="10" aria-label="Cantidad" aria-describedby="button-decrease button-increase">
+                                                <button class="btn btn-primary" type="button" id="button-increase">+</button>
+                                            </div>
+                                            <div class="d-flex justify-content-end mt-3">
+                                                <button class="btn btn-primary">Eliminar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="\images\vendido-bg.jpg" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Herbicida Glyphosate</h5>
+                                            <p class="card-text"> ₡12,000</p>
+                                            <p>Cantidad</p>
+                                            <div class="input-group" style="width: 160px;">
+                                                <button class="btn btn-primary" type="button" id="button-decrease">-</button>
+                                                <input type="number" class="form-control text-center" value="1" min="1" max="10" aria-label="Cantidad" aria-describedby="button-decrease button-increase">
+                                                <button class="btn btn-primary" type="button" id="button-increase">+</button>
+                                            </div>
+                                            <div class="d-flex justify-content-end mt-3">
+                                                <button class="btn btn-primary">Eliminar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="productos-agregados row" id="">
+                                        <div class="col-6">
+                                            <p>Hierbicida Clearcast</p>
+                                            <p class="precio">₡17,000</p>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <p>2</p>
+                                        </div>
+                                    </div>
+                                    <div class="productos-agregados row" id="">
+                                        <div class="col-6">
+                                            <p>Insecticida PimX</p>
+                                            <p class="precio">₡65,000</p>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <p>3</p>
+                                        </div>
+                                    </div>
+                                     <div class="productos-agregados row" id="">
+                                        <div class="col-6">
+                                            <p>GreenPlants Mg</p>
+                                            <p class="precio">₡65,000</p>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <p>1</p>
+                                        </div>
+                                    </div>
+                                    <div class="precios row">
+                                        <div class="col-6">
+                                            <p>Subtotal</p>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <p>₡165,000</p>
+                                        </div>
+                                    </div>
+                                    <div class="precios row">
+                                        <div class="col-6">
+                                            <p>Envio</p>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <p>₡10,000</p>
+                                        </div>
+                                    </div>
+                                    <div class="precios row">
+                                        <div class="col-6">
+                                            <p>Total</p>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <p>₡185,000</p>
+                                        </div>
+                                    </div>
+                                    <div class="precios row">
+                                        <div class="col-6 text-end">
+                                           <button class="btn btn-primary">Pagar</button>
+                                        </div>
+                                        <div class="col-6 text-start">
+                                            <button class="btn btn-primary">Seguir comprando</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+</html>
+

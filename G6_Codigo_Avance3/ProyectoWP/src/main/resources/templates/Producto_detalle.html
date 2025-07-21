@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title th:text="${producto.nombre} + ' - AMVAC'">Detalle del Producto</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+    </head>
+    <body>
+        <div class="page-container">
+            <header class="main-header" th:insert="~{fragments/header :: header}"></header>
+
+            <main th:object="${producto}">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <span><a th:href="@{/}">Inicio</a> > <a th:href="@{/catalogo}">Catálogo</a> >
+                            <span th:text="*{nombre}">Producto</span></span>
+                    </div>
+
+                    <div class="product-detail-container">
+                        <div class="product-detail-image">
+                            <img th:src="@{/images/{img}(img=*{rutaImagen})}" th:alt="*{nombre}">
+                        </div>
+
+                        <div class="product-detail-info">
+                            <h1 th:text="*{nombre}">Nombre del Producto</h1>
+
+                            <div class="price-favorite-row">
+                                <p class="detail-price"
+                                   th:text="'₡' + *{#numbers.formatDecimal(precio, 0, 'POINT', 0, 'COMMA')}">₡65,000</p>
+
+                                <button id="btn-favorite"
+                                        class="btn-favorite"
+                                        th:onclick="'toggleFavorito(' + *{idProducto} + ')'"
+                                        data-active="false">
+                                    <svg id="heart-icon" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+                                        2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                                        C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 
+                                        22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                    </svg>
+                                    Favorito
+                                </button>
+                            </div>
+
+                            <div class="size-options">
+                                <button class="size-btn active">1 Galón</button>
+                                <button class="size-btn">2 Galones</button>
+                                <button class="size-btn">5 Galones</button>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Descripción</h3>
+                                <p th:text="*{descripcion}">Descripción del producto</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Detalles del producto</h3>
+                                <ul class="product-specs">
+                                    <li><strong>Marca:</strong> <span th:text="*{marca}">Marca</span></li>
+                                    <li><strong>Tipo:</strong> <span th:text="*{tipo}">Tipo</span></li>
+                                    <li><strong>Formulación:</strong> <span th:text="*{formulacion}">Formulación</span></li>
+                                    <li><strong>Ingrediente activo:</strong>
+                                        <span th:text="*{ingredienteActivo}">Ingrediente</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="add-to-cart-action">
+                                <button class="btn btn-primary btn-large">Añadir al Carrito</button>
+                            </div>
+                        </div>
+                    </div>
+            </main>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sizeButtons = document.querySelectorAll('.size-btn');
+            sizeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    sizeButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                });
+            });
+            const idUsuario = 1;
+                    const idProducto = [[${producto.idProducto
+                    }
+                    ]];
+            const icon = document.getElementById("heart-icon");
+            const button = document.getElementById("btn-favorite");
+            fetch(`/favoritos/existe?idUsuario=${idUsuario}&idProducto=${idProducto}`)
+                    .then(res => res.json())
+                    .then(estaEnFavoritos => {
+                        if (estaEnFavoritos) {
+                            icon.setAttribute("fill", "red");
+                            button.setAttribute("data-active", "true");
+                        }
+                    });
+        });
+
+        function toggleFavorito(idProducto) {
+            const idUsuario = 1; // (Estatico)
+            const button = document.getElementById("btn-favorite");
+            const icon = document.getElementById("heart-icon");
+
+            fetch(`/favoritos/toggle?idUsuario=${idUsuario}&idProducto=${idProducto}`, {
+                method: 'POST'
+            })
+                    .then(response => {
+                        if (!response.ok)
+                            throw new Error("Error en la accion ejecutada");
+                        return response.text();
+                    })
+                    .then(msg => {
+                        alert(msg);
+                        const activo = button.getAttribute("data-active") === "true";
+                        if (!activo) {
+                            icon.setAttribute("fill", "red");
+                            button.setAttribute("data-active", "true");
+                        } else {
+                            icon.setAttribute("fill", "none");
+                            button.setAttribute("data-active", "false");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error al seleccionar el producto como favorito:", error);
+                        alert("Ocurrió un error al intentar guardar el favorito");
+                    });
+        }
+    </script>
+</body>
+</html>
+
